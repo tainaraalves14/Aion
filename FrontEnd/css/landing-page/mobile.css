@@ -1,0 +1,156 @@
+/* Section 1 */
+
+.land-section1
+{
+    gap: 0px;
+    padding: none;
+    text-align: center;
+    flex-direction: column;
+}
+
+.land-section1-div1
+{
+    width: 100vw;
+    justify-content: center;
+    padding: 0px 0px 25px 0px;
+}
+
+.land-title
+{
+    font-size: 50px;
+    line-height: 70px;
+}
+
+.land-subtitle
+{
+    width: auto;
+    font-size: 14px;
+}
+
+.land-section1-div2
+{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    align-items: center;
+}
+
+.land-img1
+{
+    width: 93vw;
+    height: auto;
+}
+
+.land-section1-img
+{
+    padding: 0;
+    gap: 0;
+    justify-content: space-around;
+    padding: 25px 0px 0px 0px;
+}
+
+.land-img2
+{
+    width: 45vw;
+    height: auto;
+}
+
+.land-img3
+{
+    width: 45vw;
+    height: auto;
+}
+
+/* Section 2 */
+
+.land-section2
+{
+    flex-direction: column;
+    padding: 50px 0px 80px 0px;
+}
+
+.land-section2-div1
+{
+    display: none;
+}
+
+.land-section2-div2
+{
+    align-items: center;
+}
+
+.land-title2
+{
+    text-align: center;
+}
+
+.land-subtitle2
+{
+    text-align: center;
+}
+
+/* Section 3 */
+
+.land-section3
+{
+    height: auto;
+}
+
+.land-section3-divs
+{
+    flex-direction: column;
+    gap: 50px;
+}
+
+.land-section3-div-subtitle
+{
+    width: 80%;
+}
+
+/* Section 4 */
+
+.land-section4
+{
+    padding: 120px 0px 120px 0px;
+}
+
+.land-section4-div
+{
+    width: 80%;
+    align-items: center;
+}
+
+.land-subtitle4
+{
+    width: 92%;
+    font-size: 30px;
+}
+
+/* Footer */
+
+
+
+
+
+
+/* Back to Top Button */
+
+.land-button-top
+{
+    width: 50px;
+    height: 50px;
+}
+
+.arrow-top
+{
+    width: 30px;
+}
+
+/* WhatsApp Button */
+
+.w-button
+{
+    bottom: 20px;
+    left: 20px;
+}

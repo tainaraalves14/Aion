@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*
+{
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body
+{
+    font-size: 100%;
+    scroll-behavior: smooth;
+    line-height: 28px;
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+}
+
+:root
+{
+    /* Main Purple */
+    --purple01: #7D14C1;
+    --purple02: #512F9D;
+    
+    /* Secondary Purple */
+    --purple03: #6B19BA;
+    --purple04: #9909CC;
+    --purple05: #823bc5;
+    --purple06: #7a30c1;
+
+    /* White */
+    --white01: #f8f8f8;
+    --white02: #f5f5f5;
+    --white03: #dfdfdf;
+
+    /* Gray */
+    --gray01: #5a5a5a;
+    --gray02: #333;
+
+    /* Red */
+    --red01: #df3636;
+    --red02: #bb2f2f;
+
+
+    /* Default Font Size */
+    --p-size: 1.2em;
+    --small-title: 1.5em;
+    --medium-title: 1.8em;
+    --title: 2em;
+    --big-title: 2.5em;
+    
+}
+
+/* ScrollBar Style */
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 12px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #5a5a5a;
+    border-radius: 15px;
+}
+
+/* Default Buttons */
+
+.btn    /* Small is Default */
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    border-radius: 40px;
+    background-image: linear-gradient(to right, var(--purple01), var(--purple02));
+    color: white;
+    font-size: var(--small-title);
+    font-weight: 300;
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.btn-medium
+{
+    width: 250px;
+    height: 70px;
+    font-size: 1.8em;
+}
+
+.btn-big
+{
+    width: 280px;
+    height: 90px;
+    font-size: 1.8em;
+}
+
+.btn-purple
+{
+    background-image: none;
+    background-color: var(--purple01);
+}
+
+.btn-white-outline
+{
+    background-image: none;
+    color: var(--gray01);
+    background-color: white;
+    border: 3px solid var(--purple01);
+}
+
+.gap15
+{
+    gap: 15px;
+}
+
+/* Default Checkbox */
+
+.inp-checkbox
+{
+    display: none;
+}
+
+.inp-checkbox + label::before
+{
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid var(--purple01);
+    margin: 1px 6px 0 0;
+}
+
+.inp-checkbox:checked + label::before
+{
+    background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 10 10'%3E%3Cg class='nc-icon-wrapper' stroke-width='1' fill='%23555555'%3E%3Cpath fill='none' stroke='%237D14C1' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' data-cap='butt' d='M2.83 4.72l1.58 1.58 2.83-2.83'/%3E%3C/g%3E%3C/svg%3E");
+    background-position: center;
+}
+
+
+/* MEDIA QUERYS */
+
+@media screen and (max-width: 768px)
+{
+    .btn    /* Small is Default */
+    {
+        width: 80px;
+        height: 40px;
+        border-radius: 40px;
+        font-size: var(--p-size);
+        font-weight: 200;
+    }
+}

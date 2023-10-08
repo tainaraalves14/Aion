@@ -1,0 +1,81 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<section class="logo-container">
+    <img class="logo" src="../../img/logo/aion-white-logo.png" alt="Aion Logo">
+    <h1 class="title">Crie sua conta <strong>gratuitamente</strong> e aproveite o <strong>poder</strong> da
+        nossa ferramenta.</h1>
+</section>
+<section class="form-container">
+    <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+        <h1 class="welcome-title">Bem-vindo</h1>
+        <div class="login-container">
+            <h1 class="title-form">Faça seu Cadastro</h1>
+            <div class="error" asp-validation-summary="ModelOnly"></div>
+            <div class="field">
+                <input asp-for="Input.Name" class="inp-field" type="text" autocomplete="name" required>
+                <label asp-for="Input.Name" class="form-label" for="name"></label>
+                <span asp-validation-for="Input.Name" class="error"></span>
+            </div>
+            <div class="field">
+                <input asp-for="Input.Email" class="inp-field" type="text" autocomplete="email" required>
+                <label asp-for="Input.Email" class="form-label" for="email"></label>
+                <span asp-validation-for="Input.Email" class="error"></span>
+            </div>
+            @* <div class="field">
+                <input asp-for="Input.PhoneNumber" class="inp-field" type="tel" name="phone" autocomplete="tel" required>
+                <label asp-for="Input.PhoneNumber" class="form-label" for="phone"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="error"></span>
+            </div> *@
+            <div class="field">
+                <input asp-for="Input.Password" class="inp-field" type="password" autocomplete="new-password" required>
+                <label asp-for="Input.Password" class="form-label" for="password"></label>
+                <span asp-validation-for="Input.Password" class="error"></span>
+            </div>
+            <div class="field">
+                <input asp-for="Input.ConfirmPassword" class="inp-field" type="password" autocomplete="new-password" required>
+                <label asp-for="Input.ConfirmPassword" class="form-label" for="confirm-password"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="error"></span>
+            </div>
+            <div class="remember-forgot">
+                <div class="remember-container">
+                    <input type="checkbox" id="remember" class="inp-checkbox" onclick="TermsConditions()">
+                    <label for="remember" class="remember-label">
+                        Eu li e concordo com os&nbsp<a href="javascript:void(0)">termos de uso</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn disabled" type="submit" id="criar" disabled>Criar Conta</button>
+        <div class="line"></div>
+        <div class="signup-container">
+            <a asp-area="Identity" asp-page="/Account/Login" class="signup">Já possui um cadastro?</a>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <script type="text/javascript">
+        let btn = document.querySelector('#criar')
+        let check = document.querySelector('#remember')
+
+        function TermsConditions()
+        {
+            console.log('aaa')
+            if (check.checked == true)
+            {
+                console.log("aaaaa");
+                btn.removeAttribute("disabled");
+                btn.classList.remove("disabled");
+                return;
+            }
+            btn.setAttribute("disabled", true);
+            btn.classList.add("disabled");
+        }
+    </script>
+}

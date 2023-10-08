@@ -1,0 +1,140 @@
+body
+{
+    display: flex; /* Para o conteúdo da página ficar ao lado */
+}
+
+main
+{
+    margin-left: 18%; /* Mesma largura da sidebar para o conteudo não ficar por baixo */
+}
+
+.sidebar
+{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, var(--purple03) 55%, var(--purple02));
+    justify-content: space-between;
+}
+
+.border-radious-side
+{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.logo-container
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.logo
+{
+    width: 180px;
+    justify-content: center;
+}
+
+.side-item-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+    color: white;
+    cursor: pointer;
+}
+
+.side-item-container:hover
+{
+    transition: .1s;
+    background-color: var(--purple05)!important; /* Faz com que o hover sobreponha o selected */
+}
+
+.selected
+{
+    background-color: var(--purple06);
+}
+
+.side-item-icon
+{
+    width: 40px;
+    margin-right: 15px;
+}
+
+.side-item-title
+{
+    font-size: var(--p-size);
+    font-weight: 300;
+}
+
+.btn-side-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 6%;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 10px;
+    background-color: transparent;
+}
+
+.btn-side-user
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: transparent;
+    gap: 5%;
+    cursor: pointer;
+}
+
+.btn-side-user:hover
+{
+    background-color: var(--purple05);
+    transition: .15s;
+}
+
+.btn-side-user img
+{
+    width: 38px;
+}
+
+.btn-side-user span
+{
+    width: auto;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--medium-title);
+    font-weight: 300;
+}
+
+.btn-side-logout, .btn-side-logout > button
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    background-color: var(--red01);
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-side-logout:hover, .btn-side-logout:hover > button
+{
+    background-color: var(--red02);
+    transition: .1s;
+}
+
+.logout-icon
+{
+    width: 30px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/default.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/login-signup/style.css" />
+    <title>Cadastre-se</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="landing-page.html" class="logo-nav">
+                <img src="../../img/logo/aion-white.png" alt="Logo" />
+            </a>
+            <input type="checkbox" id="menu-hamburger">
+            <label id="btn-menu" for="menu-hamburger">
+                <img src="../../img/icons/menu-hamburger.svg" alt="Menu">
+            </label>
+            <ul class="nav-items-container">
+                <li><a class="nav-item-white" href="../inicio/landing-page.html">Início</a></li>
+                <li><a class="nav-item-white" href="../inicio/sobre.html">Sobre</a></li>
+                <li><a class="nav-item-white" href="../inicio/planos.html">Planos</a></li>
+                <li><a class="nav-item-white" href="javascript:void(0)">Privacidade</a></li>
+                <button class="btn" id="btn-hamburger">Login</button>
+            </ul>
+            <button class="btn hidden-btn" id="btn-nav">Login</button>
+        </nav>
+    </header>
+    <main>
+        <section class="logo-container">
+            <img class="logo" src="../../img/logo/aion-white-logo.png" alt="Aion Logo">
+            <h1 class="title">Crie sua conta <strong>gratuitamente</strong> e aproveite o <strong>poder</strong> da
+                nossa ferramenta.</h1>
+        </section>
+        <section class="form-container">
+            <form name="signup">
+                <h1 class="welcome-title">Bem-vindo</h1>
+                <div class="login-container">
+                    <h1 class="title-form">Faça seu Cadastro</h1>
+                    <div class="field">
+                        <input class="inp-field" type="text" name="username" required>
+                        <label class="form-label" for="username">Usuário</label>
+                    </div>
+                    <div class="field">
+                        <input class="inp-field" type="password" name="password" required>
+                        <label class="form-label" for="password">Senha</label>
+                    </div>
+                    <div class="field">
+                        <input class="inp-field" type="password" name="confirm-password" required>
+                        <label class="form-label" for="confirm-password">Confirmar Senha</label>
+                    </div>
+                    <div class="field">
+                        <input class="inp-field" type="text" name="phone" required>
+                        <label class="form-label" for="phone">Telefone</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-container">
+                            <input type="checkbox" id="remember" class="inp-checkbox">
+                            <label for="remember" class="remember-label">
+                                Eu li e concordo com os&nbsp<a href="javascript:void(0)">termos de uso</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="button" value="Criar Conta" class="btn">
+                <div class="line"></div>
+                <div class="signup-container">
+                    <a href="login.html" class="signup">Já possui um cadastro?</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

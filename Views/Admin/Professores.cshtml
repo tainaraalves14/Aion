@@ -1,0 +1,188 @@
+@model List<Professor>
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Professores";
+    Layout= "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<header>
+    <div class="header-title-container pad-left">
+        <h1 class="header-title">Professores</h1>
+    </div>
+    <button class="add-container pad-right btn-modal">
+        <img class="add-icon" src="~/img/icons/add.svg" alt="add">
+        <span class="add-title">Adicionar</span>
+    </button>
+</header>
+<section class="table-container">
+    @if (ViewBag.hasProfessor == false)
+    {
+        <div class="table">
+            <span class="msg-table">Nenhum professor cadastrado</span>
+        </div>
+    }
+    else
+    {
+        <div class="table">
+            <div class="table-item">
+                @foreach (var professores in Model)
+                {
+                    <div class="table-item-container">
+                        <div class="table-item-btn" id="teacher">
+                            <label class="drop-item-label" for="drop-item-@professores.Id"></label>
+                            <label for="teacher" class="table-item-name">@professores.Nome</label>
+                            <img class="arrow-icon" src="~/img/icons/arrow-down.svg" alt="Mostrar mais">
+                        </div>
+                        <input class="drop-item" id="drop-item-@professores.Id" type="checkbox">
+                        <div class="table-item-btn-hd">
+                            <div class="drop-details">
+                                <div class="details-container">
+                                    <h1>Usuário</h1>
+                                    <p>@professores.Usuario</p>
+                                </div>
+                                <div class="details-container">
+                                    <h1>E-mail</h1>
+                                    <p>
+                                        <a class="email-prof" href="mailto:@professores.Email">@professores.Email
+                                            <img src="~/img/icons/link.svg" alt="link">
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="details-container">
+                                    <h1>Telefone</h1>
+                                    <p>@professores.Telefone</p>
+                                </div>
+                                <div class="details-container">
+                                    <h1>Matérias</h1>
+                                    @foreach (var disciplina in @professores.Formacao)
+                                    {
+                                        <p>&bull; @disciplina.Disciplina.Nome</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="drop-btn-container">
+                                <button class="drop-btn btn-modal-edt" onclick="openModalEdtProfessores('@professores.Id', '@professores.Nome', '@professores.Email', '@professores.Telefone', '@string.Join(',', professores.Formacao.Select(f => f.DisciplinaId).ToList())')" id="id-@professores.Id">
+                                    <img src="~/img/icons/edit.svg" alt="Edit">
+                                </button>
+                                <button class="drop-btn">
+                                    <label for="btn-delete-@professores.Id">
+                                        <img src="~/img/icons/delete.svg" alt="Delete">
+                                    </label>
+                                    <input style="display: none;" class="btn-modal-del" name="Id" onclick="openModalDel('@professores.Id', '@professores.Nome')" id="btn-delete-@professores.Id"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</section>
+
+<section class="modal">
+    <div class="modal-container">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Cadastrar Professor</h1>
+            <button class="close-modal">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form asp-action="Professores" method="post" class="form-modal" id="form-add">
+            <div class="field-modal">
+                <label for="name-add">Nome Completo</label>
+                <input class="inp-modal" type="text" id="name-add" name="name" placeholder="Nome">
+            </div>
+            <div class="field-modal">
+                <label for="email-add">E-mail</label>
+                <input class="inp-modal" type="email" id="email-add" name="email" placeholder="Email">
+            </div>
+            <div class="field-modal">
+                <label for="phone-add">Telefone</label>
+                <input class="inp-modal" type="tel" id="phone-add" name="phone" placeholder="Telefone">
+            </div>
+            <div class="field-modal">
+                <label for="select-modal" id="label-modal">Matérias</label>
+                <input type="text" class="select-modal" id="select-modal" name="subjects" placeholder="Selecione as Matérias" readonly>
+                <div class="dropdown-container">
+                    <div class="dropdown-select">
+                        @foreach (var materia in ViewBag.Materias)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select" type="checkbox" id="item-select-@materia.Id" name="subject">
+                                <label for="item-select-@materia.Id" class="item-select" id="items-@materia.Id" onmousedown="select(@materia.Id)">@materia.Nome</label>
+                            </div>
+                        }
+                        <div class="item-select-container">
+                            <a asp-action="Materias" asp-controller="Admin" class="item-select-add"><img src="~/img/icons/add.svg" alt="Add">Adicionar Matéria</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-modal" id="submit-add">Adicionar</button>
+        </form>
+    </div>
+</section>
+
+<section class="modal-edt">
+    <div class="modal-container modal-container-edt">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Editar Professor</h1>
+            <button class="close-modal-edt">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form asp-action="EditProfessor" method="post" class="form-modal" id="form-edt">
+            <div class="field-modal">
+                <label for="name-edt">Nome Completo</label>
+                <input class="inp-modal" type="text" id="name-edt" name="name" placeholder="Nome" disabled>
+            </div>
+            <div class="field-modal">
+                <label for="email-edt">E-mail</label>
+                <input class="inp-modal" type="email" id="email-edt" name="email" placeholder="Email" disabled>
+            </div>
+            <div class="field-modal">
+                <label for="phone-edt">Telefone</label>
+                <input class="inp-modal" type="tel" id="phone-edt" name="phone" placeholder="Telefone">
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-edt" id="label-modal-edt">Matérias</label>
+                <input type="text" class="select-modal-edt" id="select-modal-edt" name="subjects" placeholder="Selecione as Matérias" readonly>
+                <div class="dropdown-container-edt">
+                    <div class="dropdown-select-edt">
+                        @foreach (var materia in ViewBag.Materias)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-edt" type="checkbox" id="item-select-edt-@materia.Id" name="subject-edt">
+                                <label for="item-select-edt-@materia.Id" class="item-select-edt" id="items-edt-@materia.Id" onmousedown="selectEdt(@materia.Id)">@materia.Nome</label>
+                            </div>
+                        }
+                        <div class="item-select-container">
+                            <a asp-action="Materias" asp-controller="Admin" class="item-select-add"><img src="~/img/icons/add.svg" alt="Add">Adicionar Matéria</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" id="id-edt">
+            <button type="submit" class="btn btn-modal" id="submit-edt">Salvar</button>
+        </form>
+    </div>
+</section>
+<section class="modal modal-del">
+    <form asp-action="DeleteProfessor" method="post" class="modal-container modal-container-del">
+        <div class="title-modal-container-del">
+            <h1 class="title-modal-del">Tem certeza que deseja remover o professor(a) <span id="name-del"></span> ?</h1>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-modal btn-white-outline close-modal-del">Cancelar</button>
+            <input type="hidden" name="id" id="id-del"/>
+            <button type="submit" class="btn btn-modal">Remover</button>
+        </div>
+    </form>
+</section>
+
+@section Scripts{
+    <script src="~/js/modal.js"></script>
+    <script src="~/js/multi-select-teacher-add.js"></script>
+    <script src="~/js/multi-select-teacher-edt.js"></script>
+}

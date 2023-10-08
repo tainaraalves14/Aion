@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Planos";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/planos/style.css" />
+}
+
+<p class="info-text">Os Planos São Cobrados Anualmente</p>
+        <div class="card-container">
+            <section class="card card-gratis">
+                <div class="card-header">
+                    <h1 class="title">Básico</h1>
+                    <img class="line" src="~/img/icons/planos-line.jpg" alt="linha" />
+                </div>
+                <div class="card-content">
+                    <ul class="list">
+                        <li>Plano <strong>Gratuito</strong></li>
+                        <li>Tenha 1 grade de horários</li>
+                        <li>Turnos Ilimitados</li>
+                        <li>Professores Ilimiados</li>
+                        <li>Reduza os dias de trabalho</li>
+                        <li>Evite aulas de uma disciplina em dias consecutivos</li>
+                    </ul>
+                    <div class="price-container">
+                        <h1 class="price">Grátis</h1>
+                        <p class="price-info">Por tempo ilimitado</p>
+                    </div>
+                    <div class="input-container">
+                        <input class="btn btn-white-outline" type="button" value="Comece Agora" />
+                    </div>
+                </div>
+            </section>
+            <section class="card">
+                <div class="card-header">
+                    <h1 class="title">Avançado</h1>
+                    <img class="line" src="~/img/icons/planos-line-arrow.png" alt="linha" />
+                </div>
+                <div class="card-content">
+                    <ul class="list">
+                        <li><strong>Tudo do Básico e mais:</strong></li>
+                        <li>Tenha 3 grades de horários</li>
+                        <li>Comparação entre as grades de resultados</li>
+                        <li>Reduza as janelas de aulas</li>
+                        <li>Tenha quantas turmas quiser</li>
+                        <li>Compartilhe aulas em um local</li>
+                    </ul>
+                    <div class="price-container">
+                        <h1 class="price">R$0,99/mês</h1>
+                        <p class="price-info">por turma</p>
+                    </div>
+                    <div class="input-container">
+                        <input class="btn btn-purple" type="button" value="Adquirir" />
+                    </div>
+                </div>
+            </section>
+            <section class="card">
+                <div class="card-header">
+                    <h1 class="title title-premium">Premium</h1>
+                    <img class="line" src="~/img/icons/planos-line-arrow.png" alt="linha" />
+                </div>
+                <div class="card-content">
+                    <ul class="list">
+                        <li><strong>Tudo do avançado e mais:</strong></li>
+                        <li>Grades ilimitadas</li>
+                        <li>Compartilhe aulas entre turmas</li>
+                        <li>Otimize mais de uma grade simultaneamente</li>
+                        <li>Importe seus dados e exporte em Planilhas</li>
+                    </ul>
+                    <div class="price-container">
+                        <h1 class="price">R$4,99/mês</h1>
+                        <p class="price-info">por turma</p>
+                    </div>
+                    <div class="input-container">
+                        <input class="btn btn-purple" type="button" value="Adquirir" />
+                    </div>
+                </div>
+            </section>
+        </div>

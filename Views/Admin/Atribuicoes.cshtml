@@ -1,0 +1,209 @@
+@model List<Atribuicao>
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Atribuições";
+    Layout= "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<header>
+    <div class="header-title-container pad-left">
+        <h1 class="header-title">Atribuições</h1>
+    </div>
+    <button class="add-container pad-right btn-modal">
+        <img class="add-icon" src="~/img/icons/add.svg" alt="add">
+        <span class="add-title">Adicionar</span>
+    </button>
+</header>
+<section class="table-container">
+    @if (ViewBag.hasAtribuicao == false)
+    {
+        <div class="table">
+            <span class="msg-table">Nenhuma atribuição adicionada</span>
+        </div>
+    }
+    else
+    {
+        <div class="table">
+            <div class="table-item">
+                @foreach (var atribuicao in Model)
+                {   
+                    <section class="table-item-container">
+                        <div class="table-item-btn">
+                            @* <label style="cursor: auto;" for="course" class="table-item-name"><span class="bold">Professor: </span>@atribuicao.Professor.Nome, <span class="bold">Turma: </span>@atribuicao.Turma.Nome, <span class="bold">Atribuir Matéria: </span>@atribuicao.GradeDisciplinas.Disciplina.Nome</label> *@
+                            <div class="table-details">
+                                <label><span>Professor: </span>@atribuicao.Professor.Nome</label>
+                                <label><span>Turma: </span>@atribuicao.Turma.Nome</label>
+                                <label><span>Atribuir Matéria: </span>@atribuicao.GradeDisciplinas.Disciplina.Nome</label>
+                                @if (@atribuicao.Matriz == true)
+                                {
+                                    <label><span>Divisão: </span>A</label>
+                                }
+                                else if (@atribuicao.Matriz == false)
+                                {
+                                    <label><span>Divisão: </span>B</label>
+                                }
+                            </div>
+                            <div class="drop-btn-container">
+                                <button class="drop-btn btn-modal-edt" onclick="openModalEdtAtribuicoes('@atribuicao.Id', '@atribuicao.Professor.Nome', '@atribuicao.GradeDisciplinas.Disciplina.Nome', '@atribuicao.Turma.Nome', '@atribuicao.Matriz')" id="id-@atribuicao.Id">
+                                    <img src="~/img/icons/edit.svg" alt="Edit">
+                                </button>
+                                <button class="drop-btn">
+                                    <label for="btn-delete-@atribuicao.Id">
+                                        <img src="~/img/icons/delete.svg" alt="Delete">
+                                    </label>
+                                    <input style="display: none;" class="btn-modal-del" name="id" onclick="openModalDel('@atribuicao.Id', '@atribuicao.Professor.Nome')" id="btn-delete-@atribuicao.Id"/>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                }
+            </div>
+        </div>
+    }
+</section>
+<section class="modal">
+    <div class="modal-container modal-container-teassign">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Adicionar Atribuição</h1>
+            <button class="close-modal" id="close-modal-add">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form method="post" class="form-modal" id="form-add">
+            <div class="field-modal">
+                <label for="select-modal-teassign" id="label-modal-teassign">Professor</label>
+                <input type="text" class="select-modal-teassign" id="select-modal-teassign" name="teacher" placeholder="Selecione o Professor" readonly>
+                <div class="dropdown-container-teassign">
+                    <div class="dropdown-select-teassign">
+                        @foreach (var professor in ViewBag.Professores)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-teassign" type="checkbox" id="item-select-teassign-@professor.Id">
+                                <label for="item-select-teassign-@professor.Id" class="item-select-teassign" id="items-teassign-@professor.Id" onmousedown="selectTeAssign(@professor.Id)">@professor.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-classassign" id="label-modal-classassign">Turma</label>
+                <input type="text" class="select-modal-classassign" id="select-modal-classassign" name="turma" placeholder="Selecione a Turma" readonly>
+                <div class="dropdown-container-classassign">
+                    <div class="dropdown-select-classassign">
+                        @foreach (var turma in ViewBag.Turmas)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-classassign" type="checkbox" id="item-select-classassign-@turma.Id">
+                                <label for="item-select-classassign-@turma.Id" class="item-select-classassign" id="items-classassign-@turma.Id" onmousedown="selectClassAssign(@turma.Id)">@turma.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-gridassign" id="label-modal-gridassign">Atribuir Matéria</label>
+                <input type="text" class="select-modal-gridassign" id="select-modal-gridassign" name="gridSub" placeholder="Selecione a Matéria" readonly>
+                <div class="dropdown-container-gridassign">
+                    <div class="dropdown-select-gridassign">
+                        @foreach (var gradesDis in ViewBag.GradeDisciplinas)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-gridassign" type="checkbox" id="item-select-gridassign-@gradesDis.Id">
+                                <label for="item-select-gridassign-@gradesDis.Id" class="item-select-gridassign" id="items-gridassign-@gradesDis.Id" onmousedown="selectGridAssign(@gradesDis.Id)">@gradesDis.Disciplina.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal field-modal-checkbox">
+                <input type="hidden" name="isMatriz">
+                <input class="inp-modal inp-checkbox" type="checkbox" id="isMatriz-add" name="isMatrizInp" placeholder="Turma A">
+                <label for="isMatriz-add" class="remember-label">Matriz das turmas</label>
+            </div>
+            <button type="submit" class="btn btn-modal">Adicionar</button>
+        </form>
+    </div>
+</section>
+<section class="modal modal-edt">
+    <div class="modal-container modal-container-edt modal-container-teassignEdt">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Editar Atribuição</h1>
+            <button class="close-modal close-modal-edt" id="close-modal-edt">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form asp-action="EditAtribuicoes" method="post" class="form-modal" id="form-edt">
+            <div class="field-modal">
+                <label for="select-modal-teassignEdt" id="label-modal-teassignEdt">Professor</label>
+                <input type="text" class="select-modal-teassignEdt" id="select-modal-teassignEdt" name="teacher" placeholder="Selecione a Grade" readonly>
+                <div class="dropdown-container-teassignEdt">
+                    <div class="dropdown-select-teassignEdt">
+                        @foreach (var professor in ViewBag.Professores)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-teassignEdt" type="checkbox" id="item-select-teassignEdt-@professor.Id" name="course">
+                                <label for="item-select-teassignEdt-@professor.Id" class="item-select-teassignEdt" id="items-teassignEdt-@professor.Id" onmousedown="selectTeAssignEdt(@professor.Id)">@professor.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-classassignEdt" id="label-modal-classassignEdt">Turma</label>
+                <input type="text" class="select-modal-classassignEdt" id="select-modal-classassignEdt" name="turma" placeholder="Selecione a Grade" readonly>
+                <div class="dropdown-container-classassignEdt">
+                    <div class="dropdown-select-classassignEdt">
+                        @foreach (var turma in ViewBag.Turmas)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-classassignEdt" type="checkbox" id="item-select-classassignEdt-@turma.Id" name="course">
+                                <label for="item-select-classassignEdt-@turma.Id" class="item-select-classassignEdt" id="items-classassignEdt-@turma.Id" onmousedown="selectClassAssignEdt(@turma.Id)">@turma.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-gridassignEdt" id="label-modal-gridassignEdt">Atribuir Matérias</label>
+                <input type="text" class="select-modal-gridassignEdt" id="select-modal-gridassignEdt" name="gridSub" placeholder="Selecione a Grade" readonly>
+                <div class="dropdown-container-gridassignEdt">
+                    <div class="dropdown-select-gridassignEdt">
+                        @foreach (var gradesDis in ViewBag.GradeDisciplinas)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-gridassignEdt" type="checkbox" id="item-select-gridassignEdt-@gradesDis.Id" name="course">
+                                <label for="item-select-gridassignEdt-@gradesDis.Id" class="item-select-gridassignEdt" id="items-gridassignEdt-@gradesDis.Id" onmousedown="selectGridAssignEdt(@gradesDis.Id)">@gradesDis.Disciplina.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal field-modal-checkbox">
+                <input type="hidden" name="isMatrizEdt">
+                <input class="inp-modal inp-checkbox" type="checkbox" id="isMatriz-edt" name="isMatrizInpEdt" placeholder="Turma A">
+                <label for="isMatriz-edt" class="remember-label">Matriz das turmas</label>
+            </div>
+            <input type="hidden" name="id" id="id-edt"/>
+            <button type="submit" class="btn btn-modal">Salvar</button>
+        </form>
+    </div>
+</section>
+<section class="modal modal-del">
+    <form asp-action="DeleteAtribuicoes" method="post" class="modal-container modal-container-del">
+        <div class="title-modal-container-del">
+            <h1 class="title-modal-del">Tem certeza que deseja remover a atribuição do professor <span id="name-del"></span> ?</h1>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-modal btn-white-outline close-modal-del">Cancelar</button>
+            <input type="hidden" name="id" id="id-del"/>
+            <button type="submit" class="btn btn-modal">Remover</button>
+        </div>
+    </form>
+</section>
+
+@section Scripts{
+    <script src="~/js/modal.js"></script>
+    <script src="~/js/multi-select-assignment-add.js"></script>
+    <script src="~/js/multi-select-assignment-edt.js"></script>
+}

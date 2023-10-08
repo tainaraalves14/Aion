@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Home";
+    Layout= "~/Views/Shared/_LayoutProfessor.cshtml";
+}
+
+<section class="card-container">
+    <div class="card">
+        <img class="card-icon" src="~/img/icons/clock-line.svg" alt="Registrar Dados">
+        <p class="card-description">Registre seus horários disponíveis</p>
+        <a asp-action="RegDados" asp-controller="Professor" class="card-btn">Registrar Horários</a>
+    </div>
+    <div class="card">
+        <img class="card-icon" src="~/img/icons/check.svg" alt="Horário Final">
+        <p class="card-description">Veja os horários que foram criados!</p>
+        <a asp-action="HorarioFinal" asp-controller="Professor" class="card-btn">Horário Final</a>
+    </div>
+    <div class="card">
+        <img class="card-icon" src="~/img/icons/settings-line.svg" alt="Configurações">
+        <p class="card-description">Configurações da conta</p>
+        <a href="javascript:void(0)" class="card-btn">Configurações</a>
+    </div>
+    <div class="card">
+        <img class="card-icon" src="~/img/icons/leave-gray.svg" alt="Sair da conta">
+        <p class="card-description">Sair da conta</p>
+        <a href="javascript:void(0)" class="card-btn">Sair da Conta</a>
+    </div>
+</section>

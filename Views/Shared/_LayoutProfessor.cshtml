@@ -1,0 +1,104 @@
+﻿@using System.Text.RegularExpressions
+
+@{
+    string FirstLetterToUpper(string userName)
+    {
+        var names = userName.Split(".");
+        string firstName = names[0];
+        string firstLetterToUpper = char.ToUpper(firstName[0]).ToString();
+
+        var regexOne = new Regex(Regex.Escape(firstName[0].ToString()));
+        string result = regexOne.Replace(firstName, firstLetterToUpper, 1);
+
+        return result;
+    }
+}
+
+@{
+    var actionAtual = ViewContext.RouteData.Values["action"].ToString();
+    if (User.Identity.Name != null) ViewData["FirstNameUser"] = FirstLetterToUpper(User.Identity.Name);
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/default.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/css/professor/style.css" />
+    @await RenderSectionAsync("Styles", required: false)
+
+    <title>Professor | @ViewBag.Subtitulo</title>
+</head>
+
+<body>
+    <nav class="sidebar border-radious-side">
+        <div class="logo-container">
+            <a asp-action="Index" asp-controller="Home" class="logo">
+                <img src="~/img/logo/aion-white.png" alt="Aion Logo" />
+            </a>
+        </div>
+        <ul class="side-list">
+            <li>
+                <a asp-action="Index" asp-controller="Professor" class="side-item-container @(actionAtual == "Index" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/round-home.svg" alt="Home" />
+                    <span class="side-item-title">Home</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="RegDados" asp-controller="Professor" class="side-item-container @(actionAtual == "RegDados" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/clock-icon.svg" alt="Registrar Dados" />
+                    <span class="side-item-title">Registrar Horários</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="HorarioFinal" asp-controller="Professor" class="side-item-container @(actionAtual == "HorarioFinal" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/check-white.svg" alt="Horário Final" />
+                    <span class="side-item-title">Horário Final</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Config" asp-controller="Professor" class="side-item-container @(actionAtual == "Config" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/settings.svg" alt="Configurações" />
+                    <span class="side-item-title">Configurações</span>
+                </a>
+            </li>
+        </ul>
+        <div class="btn-side-container">
+            <button class="btn-side-user">
+                <img src="~/img/icons/profile-white.svg" alt="">
+                 <span>@ViewBag.FirstNameUser</span>
+            </button>
+            <div class="btn-side-logout btn-modal-conf">
+                <button class="btn-modal-conf">
+                    <img class="logout-icon" src="~/img/icons/leave.svg" alt="Sair">
+                </button>
+            </div>
+        </div>
+        <section class="modal-conf">
+            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" class="modal-container-conf">
+                <div class="title-modal-container-del">
+                    <h1 class="title-modal-del">Tem certeza que deseja sair da sua conta?</h1>
+                </div>
+                <div class="btn-container-confirm">
+                    <button type="button" class="btn btn-white-outline close-modal-conf">Cancelar</button>
+                    <button type="submit" class="btn">Sair</button>
+                </div>
+            </form>
+        </section>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/modal-confirm.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+body    /* for the content to stay in lines */
+{
+    display: flex;
+}
+
+.sidebar
+{
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, var(--purple03) 55%, var(--purple02));
+    justify-content: space-between;
+}
+
+.border-radious-side
+{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.logo-container
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.logo
+{
+    width: 200px;
+    justify-content: center;
+}
+
+.side-list
+{
+    margin-top: -40px;
+}
+
+.side-item-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.side-item-container:hover
+{
+    transition: .1s;
+    background-color: var(--purple05)!important; /* Faz com que o hover sobreponha o selected */
+}
+
+.selected
+{
+    background-color: var(--purple06);
+}
+
+.side-item-icon
+{
+    width: 40px;
+    margin-right: 15px;
+}
+
+.side-item-title
+{
+    font-size: var(--p-size);
+    font-weight: 300;
+}
+
+.btn-logout-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0px;
+    gap: 15px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--red01);
+}
+
+.btn-logout-container:hover
+{
+    background-color: var(--red02);
+    transition: .1s;
+}
+
+.logout-icon
+{
+    width: 25px;
+}
+
+.btn-logout
+{
+    width: 50%;
+    font-size: var(--p-size);
+    color: white;
+    background-color: transparent;
+}

@@ -1,0 +1,149 @@
+@model List<Grade>
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Grade";
+    Layout= "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<header>
+    <div class="header-title-container pad-left">
+        <h1 class="header-title">Grades</h1>
+    </div>
+    <button class="add-container pad-right btn-modal">
+        <img class="add-icon" src="~/img/icons/add.svg" alt="add">
+        <span class="add-title">Adicionar</span>
+    </button>
+</header>
+<section class="table-container">
+    @if (ViewBag.hasGrade == false)
+    {
+        <div class="table">
+            <span class="msg-table">Nenhuma grade adicionada</span>
+        </div>
+    }
+    else
+    {
+        <div class="table">
+            <div class="table-item">
+                @foreach (var grade in Model)
+                {   
+                    <section class="table-item-container">
+                        <div class="table-item-btn">
+                            <div class="table-details">
+                                <label><span>Grade: </span>@grade.Curso.Nome</label>
+                                <label><span>Data de início: </span>@grade.Data.ToString().Split(" ")[0]</label>
+                            </div>
+                            <div class="drop-btn-container">
+                                <button class="drop-btn btn-modal-edt" onclick="openModalEdtGrades('@grade.Id', '@grade.Curso.Nome', '@grade.Data', '@grade.Numero')" id="id-@grade.Id">
+                                    <img src="~/img/icons/edit.svg" alt="Edit">
+                                </button>
+                                <button class="drop-btn">
+                                    <label for="btn-delete-@grade.Id">
+                                        <img src="~/img/icons/delete.svg" alt="Delete">
+                                    </label>
+                                    <input style="display: none;" class="btn-modal-del" name="id" onclick="openModalDel('@grade.Id','@grade.Curso.Nome')" id="btn-delete-@grade.Id"/>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                }
+            </div>
+        </div>
+    }
+</section>
+<section class="modal">
+    <div class="modal-container modal-container-grid">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Adicionar Grade</h1>
+            <button class="close-modal" id="close-modal-add">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form method="post" class="form-modal" id="form-add">
+            <div class="field-modal">
+                <label for="date-add">Data de início da Grade</label>
+                <input class="inp-modal" type="text" id="date-add" name="date" placeholder="dd/mm/aaaa">
+                <span class="erro"></span>
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-grid" id="label-modal-grid">Curso</label>
+                <input type="text" class="select-modal-grid" id="select-modal-grid" name="course" placeholder="Selecione o curso" readonly>
+                <div class="dropdown-container-grid">
+                    <div class="dropdown-select-grid">
+                        @foreach (var curso in ViewBag.Cursos)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-grid" type="checkbox" id="item-select-grid-@curso.Id" name="course">
+                                <label for="item-select-grid-@curso.Id" class="item-select-grid" id="items-grid-@curso.Id" onmousedown="selectGrid(@curso.Id)">@curso.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal">
+                <label for="number-add">Número da Grade</label>
+                <input type="text" class="inp-modal" id="number-add" name="number" placeholder="Digite o número da Grade (Opcional)">
+                <span class="erro"></span>
+            </div>
+            <button type="submit" class="btn btn-modal">Adicionar</button>
+        </form>
+    </div>
+</section>
+<section class="modal modal-edt">
+    <div class="modal-container modal-container-edt modal-container-gridEdt">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Editar Grade</h1>
+            <button class="close-modal close-modal-edt" id="close-modal-edt">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form asp-action="EditGrade" method="post" class="form-modal" id="form-edt">
+            <div class="field-modal">
+                <label for="date-edt">Data de Início</label>
+                <input class="inp-modal" type="text" id="date-edt" name="date" placeholder="Data de início" autocomplete="false">
+                <span class="erro"></span>
+            </div>
+            <div class="field-modal">
+                <label for="select-modal-gridEdt" id="label-modal-gridEdt">Curso</label>
+                <input type="text" class="select-modal-gridEdt" id="select-modal-gridEdt" name="course" placeholder="Selecione o curso" readonly>
+                <div class="dropdown-container-gridEdt">
+                    <div class="dropdown-select-gridEdt">
+                        @foreach (var curso in ViewBag.Cursos)
+                        {
+                            <div class="item-select-container">
+                                <input class="check-select-gridEdt" type="checkbox" id="item-select-gridEdt-@curso.Id" name="course">
+                                <label for="item-select-gridEdt-@curso.Id" class="item-select-gridEdt" id="items-gridEdt-@curso.Id" onmousedown="selectGridEdt(@curso.Id)">@curso.Nome</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="field-modal">
+                <label for="number-edt">Número da Grade</label>
+                <input class="inp-modal" type="text" id="number-edt" name="number" placeholder="Digite o número da Grade (Opcional)">
+                <span class="erro"></span>
+            </div>
+            <input type="hidden" name="id" id="id-edt"/>
+            <button type="submit" class="btn btn-modal">Salvar</button>
+        </form>
+    </div>
+</section>
+<section class="modal modal-del">
+    <form asp-action="DeleteGrade" method="post" class="modal-container modal-container-del">
+        <div class="title-modal-container-del">
+            <h1 class="title-modal-del">Tem certeza que deseja remover a grade do curso <span id="name-del"></span> ?</h1>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-modal btn-white-outline close-modal-del">Cancelar</button>
+            <input type="hidden" name="id" id="id-del"/>
+            <button type="submit" class="btn btn-modal">Remover</button>
+        </div>
+    </form>
+</section>
+
+@section Scripts{
+    <script src="~/js/modal.js"></script>
+    <script src="~/js/multi-select-grid-add.js"></script>
+    <script src="~/js/multi-select-grid-edt.js"></script>
+}

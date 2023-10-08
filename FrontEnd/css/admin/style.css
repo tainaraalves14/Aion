@@ -1,0 +1,187 @@
+/* Header */
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+.header-title-container
+{
+    width: auto;
+}
+
+.header-title
+{
+    font-size: var(--title);
+    font-weight: 500;
+}
+
+.pad-top
+{
+    padding-top: 5vh;
+}
+
+.pad-right
+{
+    margin-right: 20vw;
+}
+
+.pad-left
+{
+    padding-left: 10vw;
+}
+
+.add-container
+{
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-icon
+{
+    width: 50px;
+}
+
+.add-title
+{
+    font-size: var(--small-title);
+    color: black;
+}
+
+/* View Page */
+
+.table-container
+{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    align-items: center;
+}
+
+.table
+{
+    font-size: var(--p-size);
+    padding-top: 30px;
+    width: 75%;
+    height: 80vh;
+}
+
+.msg-table
+{
+    color: gray;
+}
+
+.hide /* Caso tenha dados, esconda o span */
+{
+    display: none;
+}
+
+
+.teacher-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.teacher
+{
+    background-color: var(--white01);
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.teacher-btn
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.teacher-name
+{
+    width: auto;
+    color: black;
+    margin-left: 25px;
+}
+
+.arrow-icon
+{
+    width: 50px;
+}
+
+/* Add Page */
+
+.add-page-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.add-field
+{
+    width: 50vw;
+    height: 60px;
+    border-radius: 20px;
+    font-size: var(--p-size);
+    background-color: var(--white01);
+    padding-left: 20px;
+}
+
+.select-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.select
+{
+    display: flex;
+    width: 25%;
+    background-color: var(--white01);
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+
+.select-title
+{
+    width: auto;
+    font-size: var(--small-title);
+    color: black;
+    margin-left: 25px;
+}
+
+.icon-arrow-down
+{
+    width: 60px;
+    margin-right: 25px;
+}
+
+/* Gerar */
+
+footer
+{
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    width: 100%;
+}
+
+.btn-span
+{
+    width: auto;
+    padding-left: 20px;
+}
+
+.icon-arrow-right
+{
+    width: 40px;
+}

@@ -1,0 +1,134 @@
+@using System.Text.RegularExpressions
+
+@{
+    string FirstLetterToUpper(string userName)
+    {
+        var names = userName.Split(".");
+        string firstName = names[0];
+        string firstLetterToUpper = char.ToUpper(firstName[0]).ToString();
+
+        var regexOne = new Regex(Regex.Escape(firstName[0].ToString()));
+        string result = regexOne.Replace(firstName, firstLetterToUpper, 1);
+
+        return result;
+    }
+}
+
+@{
+    var actionAtual = ViewContext.RouteData.Values["action"].ToString();
+    if (User.Identity.Name != null) ViewData["FirstNameUser"] = FirstLetterToUpper(User.Identity.Name);
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/default.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/css/admin/style.css">
+    @await RenderSectionAsync("Styles", required: false)
+
+    <title>Admin | @ViewBag.Subtitulo</title>
+</head>
+
+<body>
+    <nav class="sidebar border-radious-side">
+        <div class="logo-container">
+            <a asp-action="Index" asp-controller="Home" class="logo">
+                <img src="~/img/logo/aion-white.png" alt="Aion Logo" />
+            </a>
+        </div>
+        <ul class="side-list">
+            <li>
+                <a asp-action="PeriodoLetivo" asp-controller="Admin" class="side-item-container @(actionAtual == "PeriodoLetivo" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/calendar.svg" alt="Cursos" />
+                    <span class="side-item-title">Períodos Letivos</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Cursos" asp-controller="Admin" class="side-item-container @(actionAtual == "Cursos" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/book-bold.svg" alt="Cursos" />
+                    <span class="side-item-title">Cursos</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Grades" asp-controller="Admin" class="side-item-container @(actionAtual == "Grades" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/grid.svg" alt="Cursos" />
+                    <span class="side-item-title">Grades</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Materias" asp-controller="Admin" class="side-item-container @(actionAtual == "Materias" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/materia-icon.svg" alt="Matérias" />
+                    <span class="side-item-title">Matérias</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Turmas" asp-controller="Admin" class="side-item-container @(actionAtual == "Turmas" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/class.svg" alt="Turmas" />
+                    <span class="side-item-title">Turmas</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Professores" asp-controller="Admin" class="side-item-container @(actionAtual == "Professores" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/person.svg" alt="Professores" />
+                    <span class="side-item-title">Professores</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="GradeDisciplinas" asp-controller="Admin" class="side-item-container @(actionAtual == "GradeDisciplinas" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/assign.svg" alt="Cursos" />
+                    <span class="side-item-title">Atribuir Matéria</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Atribuicoes" asp-controller="Admin" class="side-item-container @(actionAtual == "Atribuicoes" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/assignment-turned-in.svg" alt="Cursos" />
+                    <span class="side-item-title">Atribuições</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Horarios" asp-controller="Admin" class="side-item-container @(actionAtual == "Horarios" ? "selected" : "")">
+                    <img class="side-item-icon" src="~/img/icons/clock-icon.svg" alt="Horários" />
+                    <span class="side-item-title">Gerar Horários</span>
+                </a>
+            </li>
+        </ul>
+        <div class="btn-side-container">
+            <button class="btn-side-user">
+                <img src="~/img/icons/profile-white.svg" alt="">
+                 <span>@ViewBag.FirstNameUser</span> 
+            </button>
+            <div class="btn-side-logout btn-modal-conf">
+                <button class="btn-modal-conf">
+                    <img class="logout-icon" src="~/img/icons/leave.svg" alt="Sair">
+                </button>
+            </div>
+        </div>
+        <section class="modal-conf">
+            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" class="modal-container-conf">
+                <div class="title-modal-container-del">
+                    <h1 class="title-modal-del">Tem certeza que deseja sair da sua conta?</h1>
+                </div>
+                <div class="btn-container-confirm">
+                    <button type="button" class="btn btn-white-outline close-modal-conf">Cancelar</button>
+                    <button type="submit" class="btn">Sair</button>
+                </div>
+            </form>
+        </section>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/modal-confirm.js"></script>
+</body>
+
+</html>

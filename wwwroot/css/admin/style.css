@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+/* Header */
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+.header-title-container
+{
+    width: auto;
+}
+
+.header-title
+{
+    font-size: var(--title);
+    font-weight: 500;
+}
+
+.pad-top
+{
+    padding-top: 5vh;
+}
+
+.pad-right
+{
+    margin-right: 20vw;
+}
+
+.pad-left
+{
+    padding-left: 10vw;
+}
+
+.add-container
+{
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.add-icon
+{
+    width: 50px;
+}
+
+.add-title
+{
+    font-size: var(--small-title);
+    color: black;
+}
+
+/* View Page */
+
+.table-container
+{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    align-items: center;
+}
+
+.table
+{
+    font-size: var(--p-size);
+    padding-top: 30px;
+    width: 75%;
+    height: 80vh;
+}
+
+.msg-table
+{
+    color: gray;
+}
+
+.table-item-container
+{
+    padding-bottom: 40px;
+}
+
+.table-item-btn
+{
+    position: relative;
+    background-color: var(--white01);
+    padding: 5px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-details
+{
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 0 1vh 25px;
+    gap: .7vh;
+}
+
+.table-details label
+{
+    width: auto;
+    color: black;
+    font-size: 20px;
+    cursor: auto;
+}
+
+.table-details label span
+{
+    font-weight: 600;
+}
+
+.drop-item
+{
+    display: none;
+}
+
+.drop-item-label
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.drop-item:checked + .table-item-btn-hd
+{
+    display: flex;
+}
+
+.drop-item:checked + .table-item-btn
+{
+    background-color: red;
+}
+
+.table-item-name
+{
+    width: auto;
+    color: black;
+    margin-left: 25px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.table-item-btn img
+{
+    width: 50px;
+}
+
+.table-item-btn-hd
+{
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white01);
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 20px;
+    border-top: 2px solid var(--purple01);
+}
+
+.drop-details
+{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5vw;
+}
+
+.details-container
+{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.details-container > h1
+{
+    font-size: 1.05em;
+    font-weight: 600;
+    padding-bottom: 2px;
+}
+
+.email-prof
+{
+    color: black;
+}
+
+.email-prof img
+{
+    width: 1.05em;
+    margin-bottom: -2px;
+}
+
+.drop-btn-container
+{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    gap: 10px;
+}
+
+.drop-btn-container img
+{
+    width: 30px;
+}
+
+.drop-btn
+{
+    background-color: transparent;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.drop-btn label
+{
+    cursor: pointer;
+}
+
+.drop-btn:hover
+{
+    background-color: var(--white03);
+    transition: .15s;
+}
+
+/* Add Page */
+
+.add-page-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.add-field
+{
+    width: 50vw;
+    height: 60px;
+    border-radius: 20px;
+    font-size: var(--p-size);
+    background-color: var(--white01);
+    padding-left: 20px;
+}
+
+.select-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.select
+{
+    display: flex;
+    width: 25%;
+    background-color: var(--white01);
+    border-radius: 20px;
+    margin-bottom: 50px;
+}
+
+.select-title
+{
+    width: auto;
+    font-size: var(--small-title);
+    color: black;
+    margin-left: 25px;
+}
+
+.icon-arrow-down
+{
+    width: 60px;
+    margin-right: 25px;
+}
+
+/* Gerar */
+
+footer
+{
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    width: 100%;
+}
+
+.btn-span
+{
+    width: auto;
+    padding-left: 20px;
+}
+
+.icon-arrow-right
+{
+    width: 40px;
+}

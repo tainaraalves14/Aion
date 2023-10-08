@@ -1,0 +1,320 @@
+/* Main */
+
+main
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-main
+{
+    width: 80%;
+}
+
+/* Section 1 */
+
+.section1
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+}
+
+.section1-text-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}
+
+.title
+{
+    font-weight: 700;
+    font-size: 5em;
+    background-image: linear-gradient(to bottom, var(--purple01), var(--purple02));
+    color: black;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 120px;
+}
+
+.subtitle
+{
+    font-weight: 500;
+    font-size: var(--p-size);
+    color: var(--purple02);
+    padding-top: 30px;
+}
+
+.section1-img-container
+{
+    width: auto;
+}
+
+.img-bottom-container
+{
+    padding-top: 20px;
+    display: flex;
+    gap: 50px;
+}
+
+.img-top
+{
+    width: 750px;
+    height: 350px;
+    border-radius: 30px;
+}
+
+.img-bottom
+{
+    width: 350px;
+    height: 250px;
+    border-radius: 30px;
+}
+
+/* Section 2 */
+
+.section2
+{
+    display: flex;
+    padding: 180px 0px;
+    gap: 120px;
+}
+
+.section2-img-container
+{
+    width: auto;
+    display: flex;
+    gap: 30px;
+}
+
+.img2
+{
+    width: 330px;
+    height: 400px;
+    border-radius: 30px;
+}
+
+.section2-text-container
+{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.title2
+{
+    color: var(--purple02);
+    font-weight: 600;
+    font-size: var(--title);
+    width: 400px;
+    padding: 10px 0px 20px 0px;
+}
+
+.subtitle2
+{
+    color: var(--purple02);
+    font-weight: 400;
+    font-size: var(--p-size);
+    width: 400px;
+    padding: 0px 0px 50px 0px;
+}
+
+/* Section 3 */
+
+.section3
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px 50px 0px;
+    background-image: linear-gradient(to bottom, var(--purple04), var(--purple02));
+    color: white;
+}
+
+.title3
+{
+    width: auto;
+    font-weight: 600;
+    font-size: var(--title);
+    padding: 0px 0px 50px 0px;
+}
+
+.section3-box-container
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.section3-box
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.box-icon
+{
+    width: 100px;
+    height: 100px;
+}
+
+.title-box
+{
+    justify-content: center;
+    width: auto;
+    font-weight: 600;
+    font-size: var(--small-title);
+}
+
+.subtitle-box
+{
+    text-align: center;
+    width: 500px;
+    font-weight: 400;
+    font-size: var(--p-size);
+}
+
+/* Section 4 */
+
+.section4
+{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    padding: 200px 0px;
+    color: var(--purple02);
+}
+
+.section4-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.title4
+{
+    font-weight: 700;
+    font-size: var(--big-title);
+}
+
+.subtitle4
+{
+    font-weight: 300;
+    font-size: var(--title);
+    padding-bottom: 40px;
+}
+
+.arrow-right
+{
+    width: 50px;
+    height: 50px;
+}
+
+/* Footer */
+
+.footer-main
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--white02);
+    padding: 50px 0px 60px 0px;
+}
+
+.footer-title
+{
+    font-weight: 400;
+    font-size: var(--small-title);
+}
+
+.footer-container
+{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.footer-item
+{
+    color: gray;
+    font-size: var(--p-size);
+}
+
+.footer-items-container
+{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 10px;
+}
+
+.row
+{
+    flex-direction: row;
+}
+
+.footer-copy
+{
+    display: flex;
+    background-color: var(--white02);
+    justify-content: space-between;
+    width: auto;
+}
+
+.copy-msg
+{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/*----------------------------------------------------------------*/
+
+/* WhatsApp Button */
+
+.whatsapp-btn
+{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 40px;
+    left: 40px;
+    z-index: 1;
+}
+
+/* Back to Top Button */
+
+.back-top-btn
+{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, var(--purple01), var(--purple02));
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    bottom: 30px;
+    right: -500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s all;
+}
+
+.show-button-top .back-top-btn
+{
+    right: 30px;
+    transition: .3s all;
+}
+
+.arrow-top
+{
+    width: 45px;
+    height: 45px;
+}

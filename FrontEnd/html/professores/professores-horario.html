@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/default.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/professor/style.css" />
+    <title>Horário Final</title>
+</head>
+
+<body>
+    <nav class="sidebar border-radious-side">
+        <div class="logo-container">
+            <a href="../inicio/landing-page.html" class="logo">
+                <img src="../../img/logo/aion-white.png" alt="Aion Logo" />
+            </a>
+        </div>
+        <ul class="side-list">
+            <li>
+                <a href="professores-home.html" class="side-item-container">
+                    <img class="side-item-icon" src="../../img/icons/round-home.svg" alt="Home" />
+                    <span class="side-item-title">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="professores-reg-dados-1.html" class="side-item-container">
+                    <img class="side-item-icon" src="../../img/icons/clock-icon.svg" alt="Registrar Dados" />
+                    <span class="side-item-title">Registrar Dados</span>
+                </a>
+            </li>
+            <li>
+                <a href="professores-horario.html" class="side-item-container selected">
+                    <img class="side-item-icon" src="../../img/icons/check-white.svg" alt="Horário Final" />
+                    <span class="side-item-title">Horário Final</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="side-item-container">
+                    <img class="side-item-icon" src="../../img/icons/settings.svg" alt="Configurações" />
+                    <span class="side-item-title">Configurações</span>
+                </a>
+            </li>
+        </ul>
+        <a href="javascript:void(0)" class="btn-logout-container">
+            <img class="logout-icon" src="../../img/icons/leave.svg" alt="Sair">
+            <span class="btn-logout">Sair da conta</span>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <a href="javascript:void(0)" class="user-container">
+                <span id="username">Usuário</span>
+                <img class="user-arrow" src="../../img/icons/arrow-down-purple.svg" alt="Mostrar Mais">
+                <img class="user-picture" src="../../img/icons/profile.svg" alt="Perfil">
+            </a>
+        </header>
+        <section class="container">
+            <h1 class="horario-title">Horários</h1>
+            <div class="container-table">
+                <div class="table">
+                    <span class="msg-table" id="">O horário aparecerá aqui quando sua instituição enviar.</span>
+                    <!-- Dados da tabela aqui -->
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

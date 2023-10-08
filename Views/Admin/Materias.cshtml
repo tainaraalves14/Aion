@@ -1,0 +1,82 @@
+@model List<Disciplina>
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Matérias";
+    Layout= "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<header>
+    <div class="header-title-container pad-left">
+        <h1 class="header-title">Matérias </h1>
+    </div>
+    <button class="add-container pad-right btn-modal">
+        <img class="add-icon" src="~/img/icons/add.svg" alt="add">
+        <span class="add-title">Adicionar</span>
+    </button>
+</header>
+<section class="table-container">
+    @if (ViewBag.hasMateria == false)
+    {
+        <div class="table">
+            <span class="msg-table">Nenhuma matéria adicionada</span>
+        </div>
+    }
+    else
+    {
+        <div class="table">
+            <div class="table-item">
+                @foreach (var materias in Model)
+                {   
+                    <section class="table-item-container">
+                        <div class="table-item-btn" id="materia">
+                            <label style="cursor: auto;" for="materia" class="table-item-name">@materias.Nome</label>
+                            <div class="drop-btn-container">
+                                <button class="drop-btn">
+                                    <label for="btn-delete-@materias.Id">
+                                        <img src="~/img/icons/delete.svg" alt="Delete">
+                                    </label>
+                                    <input style="display: none;" class="btn-modal-del" name="Id" onclick="openModalDel('@materias.Id', '@materias.Nome')" id="btn-delete-@materias.Id"/>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                }
+            </div>
+        </div>
+    }
+</section>
+<section class="modal">
+    <div class="modal-container">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Adicionar Matéria</h1>
+            <button class="close-modal" id="close-modal-add">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <form method="post" class="form-modal" id="form">
+            <div class="field-modal">
+                <label for="name">Matéria</label>
+                <input class="inp-modal" type="text" id="name" name="name" placeholder="Nome da Matéria">
+                <span class="erro"></span>
+            </div>
+            <button type="submit" class="btn btn-modal" id="submit">Adicionar</button>
+        </form>
+    </div>
+</section>
+<section class="modal modal-del">
+    <form asp-action="DeleteMateria" method="post" class="modal-container modal-container-del">
+        <div class="title-modal-container-del">
+            <h1 class="title-modal-del">Tem certeza que deseja remover a matéria <span id="name-del"></span> ?</h1>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-modal btn-white-outline close-modal-del">Cancelar</button>
+            <input type="hidden" name="id" id="id-del"/>
+            <button type="submit" class="btn btn-modal">Remover</button>
+        </div>
+    </form>
+</section>
+
+@section Scripts{
+    <script src="~/js/modal.js"></script>
+}

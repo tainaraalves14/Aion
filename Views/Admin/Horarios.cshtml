@@ -1,0 +1,1777 @@
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Gerar Horários";
+    Layout= "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<header>
+    <div class="header-title-container pad-left">
+        <h1 class="header-title">Gerar horários</h1>
+    </div>
+    <button class="add-container pad-right btn-modal">
+        <img class="add-icon" src="~/img/icons/add.svg" alt="add">
+        <span class="add-title">Gerar</span>
+    </button>
+</header>
+<section class="table-carousel-container">
+    @* @if (ViewBag.hasHorarios == false)
+    {
+        <div class="table">
+            <span class="msg-table">Nenhum horário gerado</span>
+        </div>
+    }
+    else
+    { *@
+        <button type="button" class="arrow-left control arrow-hide">
+            <img src="~/img/icons/arrow-left-2.svg" alt="arrow-left">
+        </button>
+        <button type="button" class="arrow-right control">
+            <img src="~/img/icons/arrow-right-3.svg" alt="arrow-right">
+        </button>
+        <div class="table-wrapper">
+            <div class="table-carousel">
+                <div class="grid-table current-grid-table">
+                    <table class="table-time">
+                        <thead>
+                            <tr style="text-align: right;">
+                                <th class="table-time-logo" colspan="2">
+                                    2023
+                                </th>
+                                @foreach (var dia in ViewBag.DiaSemana)
+                                {
+                                    <th class="table-time-title"><label>@dia</label></th>
+                                }
+                            </tr>
+                        </thead>
+                                               <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>1° Médio</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>Filosofia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>LIC</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FABIO</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>KEILA</label>
+                                    <label>Artes</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>LIC</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Sociologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>LIC </label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>KEILA</label>
+                                    <label>Artes</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>LIC</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>LIC</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ANA LUCIA</label>
+                                    <label>P. Emp</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Fisica</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>Meire</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>DONIZETE</label>
+                                    <label>Geografia</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>ED.Fisica</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>DONIZETE</label>
+                                    <label>Geografia</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>THIAGO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FABIO</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>THIAGO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MATHEUS</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MATHEUS</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>2° Médio</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARI</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MATHEUS</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>LUCIANA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>Prat. Emp.</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MATHEUS</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>LUCIANA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARI</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FABIO</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>EA.L</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>L. P. C.</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>L. P. C.</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FABIO</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>EA.L</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>L. P. C.</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA </label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>L. P. C.</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARIANA</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA </label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>L. P. C.</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                  
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                 
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                  
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>3° Médio</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>LMI</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ANA LUCIA</label>
+                                    <label>Espanhol</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ANA LUCIAr</label>
+                                    <label>Espanhol</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ANA LUCIA</label>
+                                    <label> P. Emp</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>LMI</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FABIO</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>LMI</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FABIO</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>LMI</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>EA.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Física</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label> LMI</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Física</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                  
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                             
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                  
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                               
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>3°Etim</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CARLA</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>Inglês</label>
+                                    <label>CARLA</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>ED. Fisica</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>Filosofia</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CARLA</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>FALASCA</label>
+                                    <label>Matemática</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>EDRIANO</label>
+                                    <label>Proj Web</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>Gallo</label>
+                                    <label>PWII</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label>PWII</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CALEFFI</label>
+                                    <label>Mark web</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>EDRIANO</label>
+                                    <label>Proj Web</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label>PW II</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROSI</label>
+                                    <label>APW</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label> PWI</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROSI</label>
+                                    <label>TCC</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Sociologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROSI</label>
+                                    <label>APW</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label> ED. Fisica</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CALEFFI</label>
+                                    <label>Empreendedorismo</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROSI</label>
+                                    <label>TCC</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="grid-table">
+                    <table class="table-time">
+                        <thead>
+                            <tr style="text-align: right;">
+                                <th class="table-time-logo" colspan="2">
+                                    2022
+                                </th>
+                                @foreach (var dia in ViewBag.DiaSemana)
+                                {
+                                    <th class="table-time-title"><label>@dia</label></th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>1° Médio</label></td>
+                                <td class="table-time-class">
+                                       <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>PEDRO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>Sociologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>JUNIOR</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SHEILA</label>
+                                    <label>Artes</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>PEDRO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>Gabriel</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>JUNIOR</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>L.I.C</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Fisica</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABRIEL</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>E.A</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>L.I.C</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                     <label>Educação Fisica</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>L.I.C</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SHEILA</label>
+                                    <label>Artes</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>DONIZETE</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>L.I.C</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>RENATO</label>
+                                    <label>Filosofia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>L.I.C</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                     <label>DONIZETE</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MEIRE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>PEDRO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>E.A.L</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>PEDRO</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                                <td class="table-time-content">
+                                      <label>PEDRO</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>2° Médio</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>L.P.D</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SONIA</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABRIEL</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                     <label>TIAGO</label>
+                                    <label>L.P.C</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>L.P.D</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SONIA</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                   <label>TIAGO</label>
+                                    <label>L.P.D</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>L.P.D</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>PEDRO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ELISA</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>L.P.D</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>PEDRO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABRIEL</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>P.E</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ELISA</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                     <label>ALAYNE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                                <td class="table-time-content">
+                                     <label>SILVINHA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                     <label>ALAYNE</label>
+                                    <label>E.A.L</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                                <td class="table-time-content">
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>3° Médio</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>RINALDO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GEO</label>
+                                    <label>Celso</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                     <label>RINALDO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GEO</label>
+                                    <label>Celso</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>RENATO</label>
+                                    <label>Filosofia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SONIA</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>JUNIOR</label>
+                                    <label>P.A</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Física</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemaática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SONIA</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemaática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                       <label>ROGERIO</label>
+                                    <label>Matemaática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>TIAGO</label>
+                                    <label>Sociologia</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="table-time-sidetitle" rowspan="8"><label>3° ETIM</label></td>
+                                <td class="table-time-class">
+                                    <span>1º</span>
+                                    @ViewBag.HorariosAula[0]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>HENRIQUE</label>
+                                    <label>Filosofia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Sociologia</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>2º</span>
+                                    @ViewBag.HorariosAula[1]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>Inglês</label>
+                                </td>
+                              <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>3º</span>
+                                    @ViewBag.HorariosAula[2]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARCIO</label>
+                                    <label>PWA</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SILVINHA</label>
+                                    <label>Educação Física</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GABI</label>
+                                    <label>Inglês</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ALAYNE</label>
+                                    <label>LPL</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>4º</span>
+                                    @ViewBag.HorariosAula[3]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>MARCIO</label>
+                                    <label>PWA</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>EDRIANO</label>
+                                    <label>TCC</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label>PWII</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label>PWII</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>5º</span>
+                                    @ViewBag.HorariosAula[4]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>RINALDO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>EDRIANO</label>
+                                    <label>TCC</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CAROL</label>
+                                    <label>Biologia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label>PWII</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SERGIO</label>
+                                    <label>A.W</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>6º</span>
+                                    @ViewBag.HorariosAula[5]
+                                </td>
+                                <td class="table-time-content">
+                                     <label>RINALDO</label>
+                                    <label>História</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>GALLO</label>
+                                    <label>PWII</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CALEFFI</label>
+                                    <label>Marketing Web</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CALEFFI</label>
+                                    <label>Empreendedorismo</label>
+                                </td>
+                                <td class="table-time-content">
+                                    <label>SERGIO</label>
+                                    <label>A.W</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>7º</span>
+                                    @ViewBag.HorariosAula[6]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-time-class">
+                                    <span>8º</span>
+                                    @ViewBag.HorariosAula[7]
+                                </td>
+                                <td class="table-time-content">
+                                    <label>ROGERIO</label>
+                                    <label>Matemática</label>
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CELSO</label>
+                                    <label>Geografia</label>
+                                </td>
+                                <td class="table-time-content">
+                                    
+                                </td>
+                                <td class="table-time-content">
+                                    <label>CIÇA</label>
+                                    <label>Química</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    @* } *@
+</section>
+<section class="modal">
+    <div class="modal-container">
+        <div class="title-modal-container">
+            <h1 class="title-modal">Gerar Horário</h1>
+            <button class="close-modal" id="close-modal-add">
+                <img src="~/img/icons/close-rounded.svg" alt="Close">
+            </button>
+        </div>
+        <div class="form-modal" id="form-add">
+            <div class="field-modal">
+                <label for="date-add">Ano da Grade</label>
+                <input class="inp-modal" type="text" id="date-add" name="date" placeholder="Digite o ano da Grade">
+                <span class="erro"></span>
+            </div>
+            <button type="submit" class="btn btn-modal">Gerar</button>
+        </div>
+    </div>
+</section>
+<section class="modal-save">
+    <div class="modal-container-save">
+        <div class="title-modal-container-save">
+            <h1 class="title-modal-del">Tem certeza que deseja enviar esse horário aos professores?</h1>
+            <span>Você só pode enviar uma tabela!</span>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-white-outline close-modal-save">Cancelar</button>
+            <button type="submit" class="btn">Enviar</button>
+        </div>
+    </div>
+</section>
+
+@* Esta aqui apenas para não exibir o erro de nulo no modal.js *@
+<section class="modal modal-del">
+    <form asp-action="DeleteGrade" method="post" class="modal-container modal-container-del">
+        <div class="title-modal-container-del">
+            <h1 class="title-modal-del">Tem certeza que deseja remover a grade do curso <span id="name-del"></span> ?</h1>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-modal btn-white-outline close-modal-del">Cancelar</button>
+            <input type="hidden" name="id" id="id-del"/>
+            <button type="submit" class="btn btn-modal">Remover</button>
+        </div>
+    </form>
+</section>
+
+<footer>
+    <button class="btn btn-white-outline">
+        <span class="btn-span">Download</span>
+        <img class="icon-arrow-right" src="~/img/icons/arrow-right-2.svg" alt="">
+    </button>
+    <button class="btn btn-save">Enviar</button>
+</footer>
+
+@section Scripts{
+    <script src="~/js/modal.js"></script>
+    <script src="~/js/modal-confirm-save.js"></script>
+    <script src="~/js/table-carousel.js"></script>
+}

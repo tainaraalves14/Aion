@@ -1,0 +1,119 @@
+@model IEnumerable<DiaSemana>
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewBag.Subtitulo = "Registrar Dados";
+    Layout= "~/Views/Shared/_LayoutProfessor.cshtml";
+}
+
+<section>
+    <div class="question-container">
+        <h1 class="reg-title">Marque quais são os seus horários disponíveis!</h1>
+        <table class="table-reg">
+            <thead class="thead-reg">
+                <tr>
+                    @foreach (var dia in Model) {<th><label>@dia</label></th>}
+                </tr>
+            </thead>
+            <tbody class="tbody-reg">
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="first-@dia" value="07:10" onclick="SelectCell('@dia')">
+                            <label for="first-@dia">07:10</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="second-@dia" value="08:00" onclick="SelectCell2('@dia')">
+                            <label for="second-@dia">08:00</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="third-@dia" value="08:50" onclick="SelectCell3('@dia')">
+                            <label for="third-@dia">08:50</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="fourth-@dia" value="10:00" onclick="SelectCell4('@dia')">
+                            <label for="fourth-@dia">10:00</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="fifth-@dia" value="10:50" onclick="SelectCell5('@dia')">
+                            <label for="fifth-@dia">10:50</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="sixth-@dia" value="11:40" onclick="SelectCell6('@dia')">
+                            <label for="sixth-@dia">11:40</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="seventh-@dia" value="13:10" onclick="SelectCell7('@dia')">
+                            <label for="seventh-@dia">13:10</label>
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var dia in Model)
+                    {
+                        <td class="td-@dia td-all">
+                            <input class="hide" type="checkbox" id="eighth-@dia" value="14:00" onclick="SelectCell8('@dia')">
+                            <label for="eighth-@dia">14:00</label>
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+        <div class="select-all-container">
+            <input type="checkbox" class="inp-checkbox" id="selectAll">
+            <label for="selectAll" id="selectAllLabel">Selecionar todos</label>
+        </div>
+    </div>
+    <div class="btn-container">
+        <button class="btn btn-medium btn-save" onclick="GetCells()">Enviar</button>
+    </div>
+</section>
+<section class="modal-save">
+    <form method="post" class="modal-container-save">
+        <div class="title-modal-container-save">
+            <h1 class="title-modal-del">Tem certeza que deseja enviar esses dados?</h1>
+            <span>Você não poderá fazer alterações!</span>
+        </div>
+        <div class="btn-container-confirm">
+            <button type="button" class="btn btn-white-outline close-modal-save">Cancelar</button>
+            <button type="submit" class="btn">Enviar</button>
+        </div>
+    </form>
+</section>
+
+@section Scripts{
+    @* <script src="~/js/multi-select-reg.js"></script> *@
+    <script src="~/js/modal-confirm-save.js"></script>
+    <script src="~/js/table.js"></script>
+}

@@ -1,0 +1,85 @@
+/* Meet Us */
+
+.meet-aion
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 45px 0px;
+}
+
+.title
+{
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: 600;
+    padding-bottom: 40px;
+    color: var(--purple02);
+}
+
+.subtitle
+{
+    font-size: var(--medium-title);
+    font-weight: 600;
+    text-align: start;
+}
+
+.paragraph
+{
+    height: auto;
+    font-size: var(--p-size);
+}
+
+.article-container
+{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Meet Aion */
+
+.meet-us
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    padding: 45px 0px;
+}
+
+.meet-us-container
+{
+    width: auto;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.owner
+{
+    width: auto;
+}
+
+.picture
+{
+    width: 350px;
+    border-radius: 20px;
+}
+
+.name
+{
+    text-align: center;
+    font-size: var(--small-title);
+    padding-top: 20px;
+}
+
+.roles
+{
+    text-align: center;
+    font-size: var(--p-size);
+}
