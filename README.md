@@ -2,6 +2,9 @@
 
 Bem-vindo ao Projeto Aion, uma solução inovadora para a elaboração automatizada de horários escolares. Este projeto foi desenvolvido como parte do Trabalho de Conclusão de Curso (TCC) do curso de Desenvolvimento de Sistemas.
 
+![image](https://github.com/tainaraalves14/Aion/assets/109969949/6755ba1e-09cc-496d-8c35-a236da564969)
+
+
 ## Visão Geral
 
 Aion é uma ferramenta projetada para resolver o desafiador problema da criação de horários escolares em instituições educacionais. Mais de 90% das escolas brasileiras enfrentam dificuldades ao elaborar horários que atendam às necessidades de alunos e professores. Aion visa simplificar esse processo, automatizando-o e garantindo uma distribuição equilibrada das aulas.
